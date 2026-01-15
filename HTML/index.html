@@ -6,6 +6,31 @@
     <title>D'lírios - Vitrine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../CSS/fonts.css">
+    <style>
+        #products > div {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0 0.75rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        #products > div > div {
+            flex: 0 0 auto;
+        }
+        @media (min-width: 768px) {
+            #products > div {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                overflow: visible;
+                padding: 0;
+            }
+            #products > div > div {
+                flex: initial;
+                width: auto;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
