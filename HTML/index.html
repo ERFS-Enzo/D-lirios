@@ -7,27 +7,36 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../CSS/fonts.css">
     <style>
-        #products > div {
-            display: flex;
-            gap: 0.5rem;
+        .products-viewport {
             overflow-x: auto;
             padding: 0 0.75rem;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
-        #products > div > div {
+
+        .products-track {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .products-track > .card {
             flex: 0 0 auto;
         }
+
         @media (min-width: 768px) {
-            #products > div {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                overflow: visible;
+            .products-viewport {
                 padding: 0;
             }
-            #products > div > div {
-                flex: initial;
-                width: auto;
+            .products-track {
+                display: flex;
+                gap: 1rem;
+                overflow: visible;
+            }
+            .products-track > .card {
+                flex: 0 0 auto;
+                width: 220px;
             }
         }
     </style>
@@ -134,32 +143,59 @@
         <section id="products" class="py-10 px-2 md:px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Destaques</h2>
 
-            <div class="max-w-6xl mx-auto flex gap-2 md:gap-8 md:grid md:grid-cols-3">
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
 
-                <!-- Card -->
-                <div class="bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/1.jpeg" alt="Produto 1" class="w-full h-32 md:h-48 object-contain rounded mb-1 md:mb-4">
+                        <!-- Card -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/1.jpeg" alt="Produto 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
                     <h3 class="font-semibold text-xs md:text-lg">Produto 1</h3>
                     <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
                 </div>
 
-                <div class="bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/2.jpeg" alt="Produto 2" class="w-full h-32 md:h-48 object-contain rounded mb-1 md:mb-4">
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/2.jpeg" alt="Produto 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
                     <h3 class="font-semibold text-xs md:text-lg">Produto 2</h3>
                     <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
                 </div>
 
-                <div class="bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/3.jpeg" alt="Produto 3" class="w-full h-32 md:h-48 object-contain rounded mb-1 md:mb-4">
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/3.jpeg" alt="Produto 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
                     <h3 class="font-semibold text-xs md:text-lg">Produto 3</h3>
                     <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
                 </div>
 
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/4.jpeg" alt="Produto 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                    <h3 class="font-semibold text-xs md:text-lg">Produto 4</h3>
+                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/5.jpeg" alt="Produto 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                    <h3 class="font-semibold text-xs md:text-lg">Produto 5</h3>
+                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                    <img src="../IMG/6.jpeg" alt="Produto 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                    <h3 class="font-semibold text-xs md:text-lg">Produto 6</h3>
+                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                </div>
+
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- CATEGORIAS -->
+        <section id="categorias">
+            
+        </section>
+
         <!-- CONTATO -->
-        <section id="contato" class="bg-gray-100 py-16 px-4 text-center">
+        <section id="contato" class="py-16 px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">Contato</h2>
             <p class="mb-8 text-gray-700">
                 Entre em contato conosco pelas redes abaixo
@@ -202,6 +238,48 @@
 
         catButton.addEventListener('click', () => {
             catMenu.classList.toggle('hidden');
+        });
+
+        // Infinite scroll setup for products (user-controlled)
+        function setupInfiniteProducts() {
+            const track = document.getElementById('productsTrack');
+            const viewport = document.querySelector('.products-viewport');
+            if (!track || !viewport) return;
+
+            // duplicate content once to allow seamless forward scroll
+            if (!track.dataset.infinite) {
+                track.innerHTML = track.innerHTML + track.innerHTML;
+                track.dataset.infinite = 'true';
+            }
+
+            // small debounce for resize-dependent calculations
+            function onScroll() {
+                const half = track.scrollWidth / 2;
+                if (viewport.scrollLeft >= half) {
+                    viewport.scrollLeft -= half;
+                } else if (viewport.scrollLeft <= 0) {
+                    // when user scrolls left past start, jump forward
+                    viewport.scrollLeft += half;
+                }
+            }
+
+            // attach listener once
+            if (!viewport._infScrollAttached) {
+                viewport.addEventListener('scroll', onScroll, { passive: true });
+                viewport._infScrollAttached = true;
+
+                // ensure starting position safe (begin at start of first set)
+                requestAnimationFrame(() => {
+                    viewport.scrollLeft = 0;
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', setupInfiniteProducts);
+        let _infResizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(_infResizeTimer);
+            _infResizeTimer = setTimeout(setupInfiniteProducts, 200);
         });
     </script>
 
