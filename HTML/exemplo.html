@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'lírios - Vitrine</title>
+    <link rel="stylesheet" href="../CSS/vitrine.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <div class="logo">D'lírios</div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="../HTML/home.html">Home</a></li>
+                    <li><a href="../HTML/vitrine.html" class="active">Produtos</a></li>
+                    <li><a href="../HTML/categoria.html">Categorias</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar produtos...">
+                <button class="btn-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>         D'lírios</h1>
+                <p>Bem-vindo a nossa vitrine online </p>
+                <button class="btn-primary">Explorar Agora</button>
+            </div>
+        </section>
+
+        <!-- Vitrine de Produtos -->
+        <section class="vitrine">
+            <div class="vitrine-header">
+                <h2>Nossos Produtos</h2>
+                <div class="filtros">
+                    <button class="filtro-btn active">Todos</button>
+                    <button class="filtro-btn">Floral</button>
+                    <button class="filtro-btn">Aromático</button>
+                    <button class="filtro-btn">Decorativo</button>
+                </div>
+            </div>
+
+            <div class="produtos-grid">
+                <!-- Card Produto 1 -->
+                <div class="produto-card">
+                    <div class="produto-img">
+                        <img src="../IMG/produto1.jpg" alt="Produto 1">
+                        <span class="badge">Novo</span>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Produto Especial</h3>
+                        <p class="categoria">Categoria</p>
+                        <div class="preco-info">
+                            <span class="preco">R$ 89,90</span>
+                            <span class="preco-original">R$ 129,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Produto 2 -->
+                <div class="produto-card">
+                    <div class="produto-img">
+                        <img src="../IMG/produto2.jpg" alt="Produto 2">
+                        <span class="badge hot">Promoção</span>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Produto Premium</h3>
+                        <p class="categoria">Categoria</p>
+                        <div class="preco-info">
+                            <span class="preco">R$ 149,90</span>
+                            <span class="preco-original">R$ 199,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Produto 3 -->
+                <div class="produto-card">
+                    <div class="produto-img">
+                        <img src="../IMG/produto3.jpg" alt="Produto 3">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Coleção Clássica</h3>
+                        <p class="categoria">Categoria</p>
+                        <div class="preco-info">
+                            <span class="preco">R$ 79,90</span>
+                            <span class="preco-original">R$ 99,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Produto 4 -->
+                <div class="produto-card">
+                    <div class="produto-img">
+                        <img src="../IMG/produto4.jpg" alt="Produto 4">
+                        <span class="badge">Destaque</span>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Exclusiva Limited</h3>
+                        <p class="categoria">Categoria</p>
+                        <div class="preco-info">
+                            <span class="preco">R$ 199,90</span>
+                            <span class="preco-original">R$ 299,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="btn-primary">Carregar Mais Produtos</button>
+            </div>
+        </section>
+
+        <!-- Seção de Benefícios -->
+        <section class="beneficios">
+            <div class="beneficio-item">
+                <div class="icon">🚚</div>
+                <h4>Entrega Rápida</h4>
+                <p>Enviamos para todo o Brasil</p>
+            </div>
+            <div class="beneficio-item">
+                <div class="icon">💳</div>
+                <h4>Pagamento Seguro</h4>
+                <p>Múltiplas opções de pagamento</p>
+            </div>
+            <div class="beneficio-item">
+                <div class="icon">📞</div>
+                <h4>Suporte 24/7</h4>
+                <p>Estamos sempre aqui para ajudar</p>
+            </div>
+            <div class="beneficio-item">
+                <div class="icon">✨</div>
+                <h4>Qualidade Premium</h4>
+                <p>Produtos selecionados com cuidado</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre D'lírios</h4>
+                <p>Sua loja online de confiança com produtos exclusivos e de qualidade.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#vitrine">Produtos</a></li>
+                    <li><a href="#categoria">Categorias</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <ul>
+                    <li>Email: contato@dlrios.com</li>
+                    <li>Telefone: (11) 9999-9999</li>
+                    <li>Endereço: São Paulo, SP</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 D'lírios. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

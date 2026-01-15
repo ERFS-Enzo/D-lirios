@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Dlirios';
+    src: url('../fonts/dlirios.otf') format('opentype'),
+        url('../fonts/dlirios.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal; 
+}
