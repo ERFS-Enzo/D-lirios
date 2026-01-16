@@ -25,6 +25,31 @@
             flex: 0 0 auto;
         }
 
+        #searchBox {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        #searchBox input {
+            min-width: 0;
+        }
+
+        @media (max-width: 370px) {
+            #searchBox {
+                padding: 0.5rem;
+            }
+            #searchBox input {
+                width: 120px;
+                font-size: 14px;
+            }
+            #searchBox svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
         @media (min-width: 768px) {
             .products-viewport {
                 padding: 0;
@@ -91,7 +116,8 @@
                             <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Cosméticos</a></li>
                             <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Camisolas</a></li>
                             <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Bolsas</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Produtos Intimos</a>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Produtos Intimos</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Peças avulsas</a></li>
                         </ul>
                     </li>
 
@@ -125,6 +151,7 @@
                         <li><a href="#" class="block px-6 py-3">Camisolas</a></li>
                         <li><a href="#" class="block px-6 py-3">Bolsas</a></li>
                         <li><a href="#" class="block px-6 py-3">Produtos Intimos</a></li>
+                        <li><a href="#" class="block px-6 py-3">Peças avulsas</a></li>
                     </ul>
                 </li>
 
@@ -141,57 +168,420 @@
 
         <!-- PRODUTOS -->
         <section id="products" class="py-10 px-2 md:px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Destaques</h2>
 
+            <!-- Produtos em destaque -->
+            <h2 class="text-3xl font-bold text-center mb-8">Destaques</h2>
             <div class="max-w-6xl mx-auto">
                 <div class="products-viewport">
                     <div id="productsTrack" class="products-track">
 
                         <!-- Card -->
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/1.jpeg" alt="Produto 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 1</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/1.jpeg" alt="Produto 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/2.jpeg" alt="Produto 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 2</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/2.jpeg" alt="Produto 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/3.jpeg" alt="Produto 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 3</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/3.jpeg" alt="Produto 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/4.jpeg" alt="Produto 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 4</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/4.jpeg" alt="Produto 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/5.jpeg" alt="Produto 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 5</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/5.jpeg" alt="Produto 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                         <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                    <img src="../IMG/6.jpeg" alt="Produto 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                    <h3 class="font-semibold text-xs md:text-lg">Produto 6</h3>
-                    <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                </div>
+                            <img src="../IMG/6.jpeg" alt="Produto 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto 6</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
 
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- CATEGORIAS -->
-        <section id="categorias">
-            
+            <!-- PIJAMAS -->
+            <h2 class="text-3xl font-bold text-center my-8">Pijamas</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/7.jpeg" alt="Pijama 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/8.jpeg" alt="Pijama 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/9.jpeg" alt="Pijama 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/10.jpeg" alt="Pijama 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/11.jpeg" alt="Pijama 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/12.jpeg" alt="Pijama 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 6</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/13.jpeg" alt="Pijama 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 7</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/14.jpeg" alt="Pijama 8" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Pijama 8</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+
+            <!-- CAMISOLAS -->
+            <h2 class="text-3xl font-bold text-center my-8">Camisolas</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/15.jpeg" alt="Camisola 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/16.jpeg" alt="Camisola 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/17.jpeg" alt="Camisola 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/18.jpeg" alt="Camisola 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/19.jpeg" alt="Camisola 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/20.jpeg" alt="Camisola 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Camisola 6</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div> 
+                    </div>     
+                </div>
+            </div>
+
+            <!-- PEÇAS AVULSAS -->
+            <h2 class="text-3xl font-bold text-center my-8">Peças Avulsas</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/21.jpeg" alt="Peça Avulsa 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/22.jpeg" alt="Peça Avulsa 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/23.jpeg" alt="Peça Avulsa 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/24.jpeg" alt="Peça Avulsa 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/25.jpeg" alt="Peça Avulsa 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LINGERIE -->
+            <h2 class="text-3xl font-bold text-center my-8">Lingerie</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- 10 Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/26.jpeg" alt="Lingerie 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/27.jpeg" alt="Lingerie 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/28.jpeg" alt="Lingerie 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/29.jpeg" alt="Lingerie 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/30.jpeg" alt="Lingerie 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div> 
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/31.jpeg" alt="Lingerie 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 6</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/32.jpeg" alt="Lingerie 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 7</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/33.jpeg" alt="Lingerie 8" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 8</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/34.jpeg" alt="Lingerie 9" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 9</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/35.jpeg" alt="Lingerie 10" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 10</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLUS SIZES -->
+            <h2 class="text-3xl font-bold text-center my-8">Plus Size</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/36.jpeg" alt="Plus Size 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/37.jpeg" alt="Plus Size 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/38.jpeg" alt="Plus Size 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/39.jpeg" alt="Plus Size 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/40.jpeg" alt="Plus Size 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOLSAS -->
+            <h2 class="text-3xl font-bold text-center my-8">Bolsas</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/41.jpeg" alt="Bolsa 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/42.jpeg" alt="Bolsa 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/43.jpeg" alt="Bolsa 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/44.jpeg" alt="Bolsa 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COSMETICOS -->
+            <h2 class="text-3xl font-bold text-center my-8">Cosméticos</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/45.jpeg" alt="Cosmético 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/46.jpeg" alt="Cosmético 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/47.jpeg" alt="Cosmético 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUTOS INTIMOS -->
+            <h2 class="text-3xl font-bold text-center my-8">Produtos Íntimos</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="products-viewport">
+                    <div id="productsTrack" class="products-track">
+
+                        <!-- Cards -->
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/48.jpeg" alt="Produto Íntimo 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 1</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/49.jpeg" alt="Produto Íntimo 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 2</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/50.jpeg" alt="Produto Íntimo 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 3</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/51.jpeg" alt="Produto Íntimo 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 4</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/52.jpeg" alt="Produto Íntimo 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 5</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/53.jpeg" alt="Produto Íntimo 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 6</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+
+                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
+                            <img src="../IMG/54.jpeg" alt="Produto Íntimo 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
+                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 7</h3>
+                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- CONTATO -->
