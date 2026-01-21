@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine - D'lírios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <script src="../JS/app.js"></script>
+    <style>
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+
+        .product-card {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 1rem;
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .heart-btn.favorited {
+            color: #ec4899;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background-color: #ec4899;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            background-color: #db2777;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ec4899;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .filter-sidebar {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ec4899;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e9d5ff;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-results {
+            margin-top: 2rem;
+        }
+
+        .search-results h3 {
+            font-size: 20px;
+            color: #ec4899;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-pink-100 shadow-md shadow-pink-200 sticky top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+            <!-- LOGO -->
+            <a href="index.html" class="text-2xl font-bold text-pink-600 [font-family:'DLirios']">D'lírios</a>
+
+            <!-- SEARCH BOX -->
+            <div id="searchBox" class="d-flex align-center border-2 rounded-full border-pink-200 p-3 hidden md:flex">
+                <input id="searchInput" type="text" placeholder="Buscar produtos..." class="bg-transparent border-none focus:outline-none placeholder-pink-400 w-64 text-pink-600">
+                <button id="searchBtn" class="btn-search ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="pink" stroke="pink" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- MENU DESKTOP & MOBILE -->
+            <nav>
+                <ul class="flex gap-4 items-center font-medium">
+                    <li>
+                        <a href="carrinho.html" class="relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.352l.646 2.585H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.516l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            <div id="cartBadge" class="cart-badge" style="display: none;">0</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-4 gap-6">
+            <!-- SIDEBAR FILTROS -->
+            <aside class="hidden md:block">
+                <div class="filter-sidebar">
+                    <h3 class="text-lg font-bold text-pink-600 mb-4">Filtros</h3>
+
+                    <!-- Categorias -->
+                    <div class="filter-group">
+                        <label>Categoria</label>
+                        <select id="categoryFilter" onchange="aplicarFiltros()">
+                            <option value="">Todas</option>
+                            <option value="destaques">Destaques</option>
+                            <option value="lingerie">Lingerie</option>
+                            <option value="pijamas">Pijamas</option>
+                            <option value="cosmeticos">Cosméticos</option>
+                            <option value="camisolas">Camisolas</option>
+                            <option value="bolsas">Bolsas</option>
+                            <option value="produtosIntimos">Produtos Íntimos</option>
+                            <option value="pecasAvulsas">Peças Avulsas</option>
+                        </select>
+                    </div>
+
+                    <!-- Preço -->
+                    <div class="filter-group">
+                        <label>Preço Máximo</label>
+                        <input type="number" id="priceFilter" placeholder="R$ 0,00" onchange="aplicarFiltros()" step="10">
+                    </div>
+
+                    <!-- Ordenação -->
+                    <div class="filter-group">
+                        <label>Ordenar por</label>
+                        <select id="sortFilter" onchange="aplicarFiltros()">
+                            <option value="">Padrão</option>
+                            <option value="menor-preco">Menor Preço</option>
+                            <option value="maior-preco">Maior Preço</option>
+                            <option value="nome">Nome A-Z</option>
+                        </select>
+                    </div>
+
+                    <button onclick="limparFiltros()" class="w-full mt-4 bg-pink-200 text-pink-700 py-2 rounded hover:bg-pink-300">
+                        Limpar Filtros
+                    </button>
+                </div>
+            </aside>
+
+            <!-- PRODUTOS -->
+            <div class="md:col-span-3">
+                <div id="productsContainer" class="products-grid"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-pink-200 text-pink-700 py-6 text-center mt-12">
+        <p class="mb-2">&copy; 2026 D'lírios. Todos os direitos reservados.</p>
+        <div class="flex justify-center gap-4">
+            <a href="https://www.instagram.com/loja_dlirios/" class="hover:text-black">Instagram</a>
+            <a href="https://www.tiktok.com/@loja_dlirios" class="hover:text-black">TikTok</a>
+        </div>
+    </footer>
+
+    <script>
+        let produtosExibidos = [];
+        const container = document.getElementById('productsContainer');
+
+        function renderizarProdutos(lista) {
+            container.innerHTML = '';
+            
+            if (lista.length === 0) {
+                container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">Nenhum produto encontrado.</p>';
+                return;
+            }
+
+            lista.forEach(produto => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div>
+                        <img src="${produto.imagem}" alt="${produto.nome}" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="font-semibold text-sm mb-2 line-clamp-2">${produto.nome}</h3>
+                        <p class="text-pink-600 font-bold mb-3">R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
+                        <button class="btn-add-cart" onclick="adicionarAoCarrinho(${JSON.stringify(produto).replace(/"/g, '&quot;')})">
+                            Adicionar ao Carrinho
+                        </button>
+                        <button onclick="verDetalhes(${produto.id})" class="w-full mt-2 text-pink-600 font-semibold hover:text-pink-700">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            produtosExibidos = lista;
+        }
+
+        function obterTodosProdutos() {
+            let todos = [];
+            for (let cat in produtos) {
+                todos.push(...produtos[cat]);
+            }
+            return todos;
+        }
+
+        function aplicarFiltros() {
+            let todosOsProdutos = obterTodosProdutos();
+            const categoria = document.getElementById('categoryFilter').value;
+            const preco = parseFloat(document.getElementById('priceFilter').value) || Infinity;
+            const ordem = document.getElementById('sortFilter').value;
+
+            let filtrados = todosOsProdutos.filter(p => {
+                if (categoria && p.categoria !== categoria) return false;
+                if (p.preco > preco) return false;
+                return true;
+            });
+
+            if (ordem) {
+                filtrados = Busca.ordenar(filtrados, ordem);
+            }
+
+            renderizarProdutos(filtrados);
+        }
+
+        function limparFiltros() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            document.getElementById('sortFilter').value = '';
+            renderizarProdutos(obterTodosProdutos());
+        }
+
+        function adicionarAoCarrinho(produto) {
+            carrinho.adicionar(produto);
+        }
+
+        function verDetalhes(id) {
+            window.location.href = `produto.html?id=${id}`;
+        }
+
+        // Busca
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            const termo = document.getElementById('searchInput').value;
+            const resultado = Busca.buscar(termo);
+            renderizarProdutos(resultado);
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('searchBtn').click();
+            }
+        });
+
+        // Verificar categoria na URL
+        const params = new URLSearchParams(window.location.search);
+        const categoria = params.get('cat');
+        if (categoria) {
+            document.getElementById('categoryFilter').value = categoria;
+            aplicarFiltros();
+        } else {
+            renderizarProdutos(obterTodosProdutos());
+        }
+    </script>
+
+</body>
+</html>

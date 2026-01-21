@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - D'lírios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <script src="../JS/app.js"></script>
+    <style>
+        .cart-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 60px 1fr;
+            }
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-details h3 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: #ec4899;
+            font-weight: bold;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-control button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #e9d5ff;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .quantity-control button:hover {
+            background-color: #fce7f3;
+        }
+
+        .btn-remove {
+            background-color: #fca5a5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-remove:hover {
+            background-color: #f87171;
+        }
+
+        .summary {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 14px;
+        }
+
+        .summary-row.total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ec4899;
+            border-top: 2px solid #fce7f3;
+            padding-top: 1rem;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background-color: #ec4899;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 1rem;
+        }
+
+        .btn-checkout:hover {
+            background-color: #db2777;
+        }
+
+        .btn-continue {
+            width: 100%;
+            background-color: #f3e8ff;
+            color: #ec4899;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .btn-continue:hover {
+            background-color: #ede9fe;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .empty-cart svg {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-pink-100 shadow-md shadow-pink-200 sticky top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="vitrine.html" class="text-2xl font-bold text-pink-600 [font-family:'DLirios']">D'lírios</a>
+            <nav class="flex items-center gap-4">
+                <a href="vitrine.html" class="hover:text-pink-600">Voltar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-pink-600 mb-8">Seu Carrinho</h1>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- ITENS DO CARRINHO -->
+            <div class="md:col-span-2" id="cartItemsContainer">
+                <!-- Itens serão inseridos aqui -->
+            </div>
+
+            <!-- RESUMO -->
+            <aside>
+                <div class="summary">
+                    <h2 class="text-lg font-bold mb-4 text-pink-600">Resumo do Pedido</h2>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Frete:</span>
+                        <span id="shipping">Grátis</span>
+                    </div>
+                    
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">R$ 0,00</span>
+                    </div>
+
+                    <button class="btn-checkout" onclick="enviarParaWhatsApp()">
+                        Continuar a Compra via WhatsApp
+                    </button>
+                    <button class="btn-continue" onclick="continuarComprando()">
+                        Continuar Comprando
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-pink-200 text-pink-700 py-6 text-center mt-12">
+        <p class="mb-2">&copy; 2026 D'lírios. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function renderizarCarrinho() {
+            const container = document.getElementById('cartItemsContainer');
+            
+            if (carrinho.itens.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.352l.646 2.585H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.516l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <h2 class="text-2xl font-bold text-gray-500 mb-2">Seu carrinho está vazio</h2>
+                        <p class="text-gray-400 mb-4">Que tal começar a comprar?</p>
+                        <button onclick="continuarComprando()" class="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700">
+                            Ver Produtos
+                        </button>
+                    </div>
+                `;
+                atualizarResumo();
+                return;
+            }
+
+            container.innerHTML = '';
+            
+            carrinho.itens.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.nome}</h3>
+                        <p class="text-sm text-gray-600">Código: ${item.id}</p>
+                        <p class="cart-item-price">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                    <div class="quantity-control md:hidden">
+                        <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade - 1})">-</button>
+                        <span>${item.quantidade}</span>
+                        <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade + 1})">+</button>
+                    </div>
+                `;
+                
+                // Em telas maiores, mostrar mais detalhes
+                if (window.innerWidth >= 768) {
+                    itemElement.innerHTML = `
+                        <img src="${item.imagem}" alt="${item.nome}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3>${item.nome}</h3>
+                            <p class="text-sm text-gray-600">Código: ${item.id}</p>
+                            <p class="cart-item-price">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                            <p class="text-sm text-gray-600 mt-2">Subtotal: <strong>R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</strong></p>
+                        </div>
+                        <div>
+                            <div class="quantity-control mb-2">
+                                <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade - 1})">-</button>
+                                <input type="number" value="${item.quantidade}" onchange="atualizarQuantidade(${item.id}, this.value)" min="1" style="width: 40px; text-align: center; border: 1px solid #e9d5ff; border-radius: 4px;">
+                                <button onclick="atualizarQuantidade(${item.id}, ${item.quantidade + 1})">+</button>
+                            </div>
+                            <button class="btn-remove" onclick="removerDoCarrinho(${item.id})">Remover</button>
+                        </div>
+                    `;
+                }
+                
+                container.appendChild(itemElement);
+            });
+
+            atualizarResumo();
+        }
+
+        function atualizarQuantidade(id, novaQuantidade) {
+            carrinho.atualizar(id, parseInt(novaQuantidade));
+            renderizarCarrinho();
+        }
+
+        function removerDoCarrinho(id) {
+            if (confirm('Tem certeza que deseja remover este item?')) {
+                carrinho.remover(id);
+                renderizarCarrinho();
+            }
+        }
+
+        function atualizarResumo() {
+            const subtotal = carrinho.obterTotal();
+            document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('total').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        function irParaCheckout() {
+            if (carrinho.itens.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+            window.location.href = 'checkout.html';
+        }
+
+        function continuarComprando() {
+            window.location.href = 'vitrine.html';
+        }
+
+        // Renderizar ao carregar
+        renderizarCarrinho();
+    </script>
+
+</body>
+</html>

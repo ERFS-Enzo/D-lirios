@@ -3,674 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D'lírios - Vitrine</title>
+    <title>D'lírios - Vitrine de Moda e Beleza</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../CSS/fonts.css">
+    <script src="../JS/app.js"></script>
     <style>
-        .products-viewport {
-            overflow-x: auto;
-            padding: 0 0.75rem;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+        .hero {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            padding: 6rem 2rem;
+            text-align: center;
         }
 
-        .products-track {
+        .cta-buttons {
             display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-            flex-wrap: nowrap;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .products-track > .card {
-            flex: 0 0 auto;
+        .btn-primary {
+            background-color: #ec4899;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        #searchBox {
+        .btn-primary:hover {
+            background-color: #db2777;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #ec4899;
+            padding: 0.75rem 2rem;
+            border: 2px solid #ec4899;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #fce7f3;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ec4899;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .categories-section {
+            background: #f9f5ff;
+            padding: 4rem 2rem;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            background-color: #fce7f3;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card h4 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ec4899;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            color: #ec4899;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
             display: flex;
-            align-items: center;
-            white-space: nowrap;
-            flex-shrink: 0;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
 
-        #searchBox input {
-            min-width: 0;
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
         }
 
-        @media (max-width: 370px) {
-            #searchBox {
-                padding: 0.5rem;
-            }
-            #searchBox input {
-                width: 120px;
-                font-size: 14px;
-            }
-            #searchBox svg {
-                width: 16px;
-                height: 16px;
-            }
+        .newsletter-form button {
+            padding: 0.75rem 1.5rem;
+            background-color: #ec4899;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        @media (min-width: 768px) {
-            .products-viewport {
-                padding: 0;
+        .newsletter-form button:hover {
+            background-color: #db2777;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            .products-track {
-                display: flex;
-                gap: 1rem;
-                overflow: visible;
+
+            .hero p {
+                font-size: 1rem;
             }
-            .products-track > .card {
-                flex: 0 0 auto;
-                width: 220px;
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .newsletter h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50">
 
     <!-- HEADER -->
-    <header class="bg-pink-100 shadow-md shadow-pink-200 z-100 top-0 sticky w-full">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-
-            <!-- LOGO -->
-            <h1 class="text-2xl font-bold text-pink-600">D'lírios</h1>
-
-            <!-- SEARCH BOX -->
-            <div id="searchBox" class="d-flex align-center border-2 rounded-full border-pink-200 p-3">
-                <input type="text" placeholder="Buscar produtos..." class="bg-transparent border-none focus:outline-none placeholder-pink-400 w-200 md:w-64 text-pink-600">
-                <button class="btn-search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="pink" stroke="pink" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+    <header class="bg-pink-100 shadow-md shadow-pink-200 sticky top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-pink-600 [font-family:'DLirios']">D'lírios</a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="vitrine.html" class="hover:text-pink-600">Produtos</a>
+                <a href="#contato" class="hover:text-pink-600">Contato</a>
+                <a href="carrinho.html" class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.352l.646 2.585H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.516l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                     </svg>
-                </button>
-            </div>
+                    <div id="cartBadge" class="absolute -top-2 -right-2 bg-pink-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold" style="display: none;">0</div>
+                </a>
+            </nav>
 
-            <!-- BOTÃO HAMBURGUER (mobile) -->
-            <button id="menuButton" class="md:hidden focus:outline-none">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"/>
+            <!-- Menu Mobile -->
+            <button class="md:hidden" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
-
-            <!-- MENU DESKTOP -->
-            <nav class="hidden md:block">
-                <ul class="flex gap-6 font-medium items-center">
-                    <li><a href="../HTML/home.html" class="hover:text-pink-600">Home</a></li>
-                    <li><a href="#products" class="hover:text-pink-600">Produtos</a></li>
-
-                    <!-- Dropdown desktop -->
-                    <li class="relative group">
-                        <button class="flex items-center gap-1 hover:text-pink-600">
-                            Categorias
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-
-                        <ul class="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded
-                                opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Lingerie</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Pijamas</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Cosméticos</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Camisolas</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Bolsas</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Produtos Intimos</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-pink-100">Peças avulsas</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#contato" class="hover:text-pink-600">Contato</a></li>
-                </ul>
-            </nav>
         </div>
 
-        <!-- MENU MOBILE -->
+        <!-- Mobile Menu -->
         <nav id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <ul class="flex flex-col divide-y font-medium">
-
-                <li><a href="../HTML/home.html" class="block px-4 py-4">Home</a></li>
-                <li><a href="#products" class="block px-4 py-4">Produtos</a></li>
-
-                <!-- Categorias mobile -->
-                <li>
-                    <button id="catButton"
-                            class="w-full flex justify-between items-center px-4 py-4">
-                        Categorias
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-
-                    <ul id="catMenu" class="hidden bg-pink-50 max-h-96 overflow-y-auto">
-                        <li><a href="#" class="block px-6 py-3">Lingerie</a></li>
-                        <li><a href="#" class="block px-6 py-3">Pijamas</a></li>
-                        <li><a href="#" class="block px-6 py-3">Cosméticos</a></li>
-                        <li><a href="#" class="block px-6 py-3">Camisolas</a></li>
-                        <li><a href="#" class="block px-6 py-3">Bolsas</a></li>
-                        <li><a href="#" class="block px-6 py-3">Produtos Intimos</a></li>
-                        <li><a href="#" class="block px-6 py-3">Peças avulsas</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#contato" class="block px-4 py-4">Contato</a></li>
-            </ul>
+            <a href="vitrine.html" class="block px-4 py-2 hover:bg-pink-100">Produtos</a>
+            <a href="#contato" class="block px-4 py-2 hover:bg-pink-100">Contato</a>
+            <a href="carrinho.html" class="block px-4 py-2 hover:bg-pink-100">Carrinho</a>
         </nav>
     </header>
 
-    <main>
-        <!-- HERO -->
-        <section id="hero" class="bg-pink-100 py-32 text-center h-96">
-            <h1 class="text-7xl sm:text-9xl mb-4 text-pink-600 [font-family:'DLirios']">D'lírios</h1>
-        </section>
+    <!-- HERO -->
+    <section class="hero">
+        <h1 class="text-7xl sm:text-9xl mb-4 text-pink-600 [font-family:'DLirios']">D'lírios</h1>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="window.location.href='vitrine.html'">
+                Começar a Comprar
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('categories-section').scrollIntoView({behavior: 'smooth'})">
+                Explorar Categorias
+            </button>
+        </div>
+    </section>
 
-        <!-- PRODUTOS -->
-        <section id="products" class="py-10 px-2 md:px-4">
+    <!-- CARACTERÍSTICAS -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Produtos Premium</h3>
+            <p>Seleção cuidadosa dos melhores produtos de qualidade para você</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h3>Frete Grátis</h3>
+            <p>Frete gratuito para compras acima de R$ 100,00 em todo Brasil</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Segurança Garantida</h3>
+            <p>Seus dados e compras são 100% protegidos conosco</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Suporte 24/7</h3>
+            <p>Atendimento por WhatsApp, Email e redes sociais</p>
+        </div>
+    </section>
 
-            <!-- Produtos em destaque -->
-            <h2 class="text-3xl font-bold text-center mb-8">Destaques</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Card -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/1.jpeg" alt="Produto 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/2.jpeg" alt="Produto 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/3.jpeg" alt="Produto 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/4.jpeg" alt="Produto 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/5.jpeg" alt="Produto 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/6.jpeg" alt="Produto 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto 6</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                    </div>
-                </div>
+    <!-- CATEGORIAS -->
+    <section id="categories-section" class="categories-section">
+        <h2 class="section-title">Nossas Categorias</h2>
+        <div class="categories">
+            <div class="category-card" onclick="irParaCategoria('lingerie')">
+                <div class="category-icon">👙</div>
+                <h4>Lingerie</h4>
             </div>
-
-            <!-- PIJAMAS -->
-            <h2 class="text-3xl font-bold text-center my-8">Pijamas</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/7.jpeg" alt="Pijama 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/8.jpeg" alt="Pijama 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/9.jpeg" alt="Pijama 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/10.jpeg" alt="Pijama 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/11.jpeg" alt="Pijama 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/12.jpeg" alt="Pijama 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 6</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/13.jpeg" alt="Pijama 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 7</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/14.jpeg" alt="Pijama 8" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Pijama 8</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>     
-                </div>
+            <div class="category-card" onclick="irParaCategoria('pijamas')">
+                <div class="category-icon">🌙</div>
+                <h4>Pijamas</h4>
             </div>
-
-            <!-- CAMISOLAS -->
-            <h2 class="text-3xl font-bold text-center my-8">Camisolas</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/15.jpeg" alt="Camisola 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/16.jpeg" alt="Camisola 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/17.jpeg" alt="Camisola 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/18.jpeg" alt="Camisola 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/19.jpeg" alt="Camisola 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/20.jpeg" alt="Camisola 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Camisola 6</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div> 
-                    </div>     
-                </div>
+            <div class="category-card" onclick="irParaCategoria('cosmeticos')">
+                <div class="category-icon">💄</div>
+                <h4>Cosméticos</h4>
             </div>
-
-            <!-- PEÇAS AVULSAS -->
-            <h2 class="text-3xl font-bold text-center my-8">Peças Avulsas</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/21.jpeg" alt="Peça Avulsa 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/22.jpeg" alt="Peça Avulsa 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/23.jpeg" alt="Peça Avulsa 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/24.jpeg" alt="Peça Avulsa 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/25.jpeg" alt="Peça Avulsa 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Peça Avulsa 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="category-card" onclick="irParaCategoria('camisolas')">
+                <div class="category-icon">👗</div>
+                <h4>Camisolas</h4>
             </div>
-
-            <!-- LINGERIE -->
-            <h2 class="text-3xl font-bold text-center my-8">Lingerie</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- 10 Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/26.jpeg" alt="Lingerie 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/27.jpeg" alt="Lingerie 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/28.jpeg" alt="Lingerie 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/29.jpeg" alt="Lingerie 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/30.jpeg" alt="Lingerie 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div> 
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/31.jpeg" alt="Lingerie 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 6</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/32.jpeg" alt="Lingerie 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 7</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/33.jpeg" alt="Lingerie 8" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 8</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/34.jpeg" alt="Lingerie 9" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 9</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/35.jpeg" alt="Lingerie 10" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Lingerie 10</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="category-card" onclick="irParaCategoria('bolsas')">
+                <div class="category-icon">👜</div>
+                <h4>Bolsas</h4>
             </div>
-
-            <!-- PLUS SIZES -->
-            <h2 class="text-3xl font-bold text-center my-8">Plus Size</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/36.jpeg" alt="Plus Size 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/37.jpeg" alt="Plus Size 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/38.jpeg" alt="Plus Size 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/39.jpeg" alt="Plus Size 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/40.jpeg" alt="Plus Size 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Plus Size 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="category-card" onclick="irParaCategoria('produtosIntimos')">
+                <div class="category-icon">💝</div>
+                <h4>Produtos Íntimos</h4>
             </div>
-
-            <!-- BOLSAS -->
-            <h2 class="text-3xl font-bold text-center my-8">Bolsas</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/41.jpeg" alt="Bolsa 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/42.jpeg" alt="Bolsa 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/43.jpeg" alt="Bolsa 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/44.jpeg" alt="Bolsa 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Bolsa 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="category-card" onclick="irParaCategoria('pecasAvulsas')">
+                <div class="category-icon">🧵</div>
+                <h4>Peças Avulsas</h4>
             </div>
-
-            <!-- COSMETICOS -->
-            <h2 class="text-3xl font-bold text-center my-8">Cosméticos</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
-
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/45.jpeg" alt="Cosmético 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/46.jpeg" alt="Cosmético 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/47.jpeg" alt="Cosmético 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Cosmético 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="category-card" onclick="irParaCategoria('destaques')">
+                <div class="category-icon">⭐</div>
+                <h4>Destaques</h4>
             </div>
+        </div>
+    </section>
 
-            <!-- PRODUTOS INTIMOS -->
-            <h2 class="text-3xl font-bold text-center my-8">Produtos Íntimos</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="products-viewport">
-                    <div id="productsTrack" class="products-track">
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <h2>Receba Novidades em Primeira Mão</h2>
+        <p>Inscreva-se e fique por dentro das promoções e lançamentos</p>
+        <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+            <input type="email" placeholder="Seu melhor email" required>
+            <button type="submit">Inscrever</button>
+        </form>
+    </section>
 
-                        <!-- Cards -->
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/48.jpeg" alt="Produto Íntimo 1" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 1</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/49.jpeg" alt="Produto Íntimo 2" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 2</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/50.jpeg" alt="Produto Íntimo 3" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 3</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/51.jpeg" alt="Produto Íntimo 4" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 4</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/52.jpeg" alt="Produto Íntimo 5" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 5</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/53.jpeg" alt="Produto Íntimo 6" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 6</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-
-                        <div class="card bg-white rounded shadow hover:shadow-lg transition p-2 md:p-4 text-center flex-shrink-0 w-32 md:w-auto">
-                            <img src="../IMG/54.jpeg" alt="Produto Íntimo 7" class="w-full h-32 md:h-48 object-cover rounded-2xl mb-1 md:mb-4">
-                            <h3 class="font-semibold text-xs md:text-lg">Produto Íntimo 7</h3>
-                            <p class="text-pink-600 font-bold text-xs md:text-base">R$ 00,00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTATO -->
-        <section id="contato" class="py-16 px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Contato</h2>
-            <p class="mb-8 text-gray-700">
-                Entre em contato conosco pelas redes abaixo
-            </p>
-
-            <div class="flex justify-center gap-4 flex-wrap">
-                <a href="https://wa.me/5517997620690" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">
-                    WhatsApp
-                </a>
-                <a href="https://www.instagram.com/loja_dlirios/" class="bg-pink-500 text-white px-6 py-3 rounded hover:bg-pink-600">
-                    Instagram
-                </a>
-                <a href="mailto:dlirioslojaa@gmail.com" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">
-                    Email
-                </a>
-            </div>
-        </section>
-
-    </main>
+    <!-- CONTATO -->
+    <section id="contato" class="py-16 px-4 text-center">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="flex justify-center gap-4 flex-wrap max-w-2xl mx-auto">
+            <a href="https://wa.me/5517997620690" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition">
+                🟢 WhatsApp
+            </a>
+            <a href="https://www.instagram.com/loja_dlirios/" class="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition">
+                📷 Instagram
+            </a>
+            <a href="mailto:dlirioslojaa@gmail.com" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">
+                ✉️ Email
+            </a>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="bg-pink-200 text-pink-700 py-6 text-center">
-        <p class="mb-2">&copy; 2026 D'lírios. Todos os direitos reservados.</p>
-        <div class="flex justify-center gap-4">
-            <a href="https://www.instagram.com/loja_dlirios/" class="hover:text-black">Instagram</a>
-            <a href="https://www.tiktok.com/@loja_dlirios" class="hover:text-black">TikTok</a>
+    <footer class="bg-pink-200 text-pink-700 py-8 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="mb-4">&copy; 2026 D'lírios. Todos os direitos reservados.</p>
+            <div class="flex justify-center gap-6 flex-wrap">
+                <a href="#" class="hover:text-pink-900">Política de Privacidade</a>
+                <a href="#" class="hover:text-pink-900">Termos de Serviço</a>
+                <a href="#" class="hover:text-pink-900">Trocas e Devoluções</a>
+            </div>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="https://www.instagram.com/loja_dlirios/" class="hover:text-pink-900">Instagram</a>
+                <a href="https://www.tiktok.com/@loja_dlirios" class="hover:text-pink-900">TikTok</a>
+                <a href="https://wa.me/5517997620690" class="hover:text-pink-900">WhatsApp</a>
+            </div>
         </div>
     </footer>
 
-
     <script>
-        const menuButton = document.getElementById('menuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const catButton = document.getElementById('catButton');
-        const catMenu = document.getElementById('catMenu');
-
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        catButton.addEventListener('click', () => {
-            catMenu.classList.toggle('hidden');
-        });
-
-        // Infinite scroll setup for products (user-controlled)
-        function setupInfiniteProducts() {
-            const track = document.getElementById('productsTrack');
-            const viewport = document.querySelector('.products-viewport');
-            if (!track || !viewport) return;
-
-            // duplicate content once to allow seamless forward scroll
-            if (!track.dataset.infinite) {
-                track.innerHTML = track.innerHTML + track.innerHTML;
-                track.dataset.infinite = 'true';
-            }
-
-            // small debounce for resize-dependent calculations
-            function onScroll() {
-                const half = track.scrollWidth / 2;
-                if (viewport.scrollLeft >= half) {
-                    viewport.scrollLeft -= half;
-                } else if (viewport.scrollLeft <= 0) {
-                    // when user scrolls left past start, jump forward
-                    viewport.scrollLeft += half;
-                }
-            }
-
-            // attach listener once
-            if (!viewport._infScrollAttached) {
-                viewport.addEventListener('scroll', onScroll, { passive: true });
-                viewport._infScrollAttached = true;
-
-                // ensure starting position safe (begin at start of first set)
-                requestAnimationFrame(() => {
-                    viewport.scrollLeft = 0;
-                });
-            }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
         }
 
-        window.addEventListener('DOMContentLoaded', setupInfiniteProducts);
-        let _infResizeTimer = null;
-        window.addEventListener('resize', () => {
-            clearTimeout(_infResizeTimer);
-            _infResizeTimer = setTimeout(setupInfiniteProducts, 200);
-        });
+        function irParaCategoria(categoria) {
+            window.location.href = `vitrine.html?cat=${categoria}`;
+        }
+
+        function handleNewsletterSignup(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert('Obrigado por se inscrever! Você receberá nossas novidades em: ' + email);
+            event.target.reset();
+        }
     </script>
 
 </body>
